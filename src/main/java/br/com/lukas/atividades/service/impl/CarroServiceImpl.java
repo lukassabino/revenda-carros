@@ -1,6 +1,8 @@
 package br.com.lukas.atividades.service.impl;
 
 import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,13 +20,17 @@ public class CarroServiceImpl implements CarroService {
 
 	@Override
 	public Carro cadastrarCarro(CarroModel model) {
-
 		return carroRepository.save(new Carro(model));
 	}
 
 	@Override
 	public List<Carro> estoque() {
 		return carroRepository.findAll();
+	}
+
+	@Override
+	public Optional<Carro> consultar(Long idCarro) {
+		return carroRepository.findById(idCarro);
 	}
 
 }
